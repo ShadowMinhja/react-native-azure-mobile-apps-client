@@ -14,7 +14,6 @@ var Platform = require('.'),
     _ = require('../../Utilities/Extensions'),
     ColumnType = require('../../sync/ColumnType'),
     storeHelper = require('./storeHelper'),
-    verror = require('verror'),
     typeConverter = require('./typeConverter');
 
 /**
@@ -163,7 +162,7 @@ function serialize (value, columnDefinitions) {
         }
         
     } catch (error) {
-        throw new verror.VError(error, 'Failed to serialize value ' + JSON.stringify(value) + '. Column definitions: ' + JSON.stringify(columnDefinitions));
+        throw new console.log(error + '. Failed to serialize value ' + JSON.stringify(value) + '. Column definitions: ' + JSON.stringify(columnDefinitions));
     }
 
     return serializedValue;
@@ -190,7 +189,7 @@ function deserialize (value, columnDefinitions) {
         }
         
     } catch (error) {
-        throw new verror.VError(error, 'Failed to deserialize value ' + JSON.stringify(value) + '. Column definitions: ' + JSON.stringify(columnDefinitions));
+        throw new console.log(error + '. Failed to deserialize value ' + JSON.stringify(value) + '. Column definitions: ' + JSON.stringify(columnDefinitions));
     }
 
     return deserializedValue;

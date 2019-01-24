@@ -1,4 +1,4 @@
-# Azure Mobile Apps: Javascript Client SDK
+# Azure Mobile Apps: ReactNative Client SDK
 
 With Microsoft Azure Mobile Apps you can add a scalable backend to your connected client applications in minutes. To learn more about Azure Mobile Apps, visit the [Mobile Apps documentation](https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/).
 
@@ -42,7 +42,7 @@ Here are a few examples of how you can use the SDK.
 ```
 <html>
 <head>
-    <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.2.0.1.js"></script>
+    <script src="https://zumo.blob.core.windows.net/sdk/azure-mobile-apps-client.2.0.0.js"></script>
     <script>
         // Create a reference to the Azure App Service
         var clientRef = new WindowsAzure.MobileServiceClient('https://YOUR-SITE-NAME.azurewebsites.net');
@@ -53,11 +53,11 @@ Here are a few examples of how you can use the SDK.
 
 #### Use the SDK as an npm package
 
-Install the SDK from npm: `npm install azure-mobile-apps-client`
+Install the SDK from npm: `npm install react-native-azure-mobile-apps-client`
 
 OR
 
-Install the SDK from github: `npm install azure/azure-mobile-apps-js-client`
+Install the SDK from github: `npm install shadowminhja/react-native-azure-mobile-apps-client`
 
 You can now use it in your Javascript code as follows:
 ```
@@ -72,9 +72,9 @@ You can bundle your Javascript code using either [WebPack](https://webpack.githu
 
 [This page](./offline-sync.md) explains the offline data sync feature in detail.
 
-## API reference
+## API documentation
 
-Refer https://azure.github.io/azure-mobile-apps-js-client for detailed API reference.
+Refer https://azure.github.io/azure-mobile-apps-js-client for detailed documentation of the APIs.
 
 ## SDK downloads
 
@@ -88,8 +88,8 @@ Refer https://azure.github.io/azure-mobile-apps-js-client for detailed API refer
 
 To build the SDK bundle yourself, follow these steps:
 ```
-git clone https://github.com/Azure/azure-mobile-apps-js-client.git
-cd azure-mobile-apps-js-client
+git clone https://github.com/shadowminhja/react-native-azure-mobile-apps-client.git
+cd react-native-azure-mobile-apps-client
 npm install
 npm run build
 ```
@@ -103,10 +103,16 @@ To run unit tests for the browser, run:
 npm run browserut
 ```
 
-## Future of Azure Mobile Apps
- 
-Microsoft is committed to fully supporting Azure Mobile Apps, including **support for the latest OS release, bug fixes, documentation improvements, and community PR reviews**. Please note that the product team is **not currently investing in any new feature work** for Azure Mobile Apps. We highly appreciate community contributions to all areas of Azure Mobile Apps. 
+## Future work
 
+Brief list of work planned in the future:
+- ability to cancel push and pull operations
+- triggering a push automatically when a pull is performed
+- support for math and date/time functions while querying for records
+- callback to allow changing how records are sent to the server during a push
+- configurable ID column. Currently ID column has to be named 'id'.
+
+All these will be added over a series of updates in the next few days. Stay tuned!
 
 ## Useful Resources
 

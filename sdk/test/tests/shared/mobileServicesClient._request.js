@@ -114,11 +114,11 @@ $testGroup('MobileServiceClient._request',
                 isCordova = Platform.getSdkInfo().language === "Cordova";
 
             if (isWinJs) {
-                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=WinJS; os=Windows 8; os_version=--; arch=Neutral; version=2.0"));
+                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=WinJS; os=Windows 8; os_version=--; arch=Neutral; version=2.0.0-beta"));
             } else if (isCordova) {
-                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=Cordova; os=--; os_version=--; arch=--; version=2.0"));
+                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=Cordova; os=--; os_version=--; arch=--; version=2.0.0-beta"));
             } else {
-                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=Web; os=--; os_version=--; arch=--; version=2.0"));
+                $assert.areEqual(0, req.headers['X-ZUMO-VERSION'].indexOf("ZUMO/2.0 (lang=Web; os=--; os_version=--; arch=--; version=2.0.0-beta"));
             }
             callback(null, { status: 200, responseText: null });
         });

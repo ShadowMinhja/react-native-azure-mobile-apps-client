@@ -578,7 +578,6 @@ exports.createError = function (exceptionOrMessage, request) {
     /// <returns>An object with error details</returns>
 
     var error;
-
     if (request) {
         var message = Platform.getResourceString("Extensions_DefaultErrorMessage");
 
@@ -611,7 +610,9 @@ exports.createError = function (exceptionOrMessage, request) {
                 if (isText) {
                     message = request.responseText;
                 } else {
-                    message = request.statusText || Platform.getResourceString("Extensions_DefaultErrorMessage");
+                    message =
+                        request.statusText ||
+                        Platform.getResourceString("Extensions_DefaultErrorMessage");
                 }
             }
         }
@@ -622,9 +623,11 @@ exports.createError = function (exceptionOrMessage, request) {
         error = new Error(exceptionOrMessage);
     } else if (exceptionOrMessage instanceof Error) { // If exceptionOrMessage is an Error object, use it as-is
         error = exceptionOrMessage; 
-    } else {
+    } else if (!_.isNull(exceptionOrMessage)) {
+        // Otherwise we'll use the object as an exception and leave the
+        // default error message
         error = new Error(Platform.getResourceString("Extensions_DefaultErrorMessage"));
-        if (!_.isNull(exceptionOrMessage)) error.exception = exceptionOrMessage;
+        error.exception = exceptionOrMessage;
     }
 
     return error;

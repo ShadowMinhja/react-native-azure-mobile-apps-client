@@ -148,7 +148,7 @@ exports.getSdkInfo = function () {
     };
 };
 
-exports.login = function (startUri, endUri, callback, providerName, appUrl) {
+exports.login = function (startUri, endUri, callback) {
     // Force logins to go over HTTPS because the runtime is hardcoded to redirect
     // the server flow back to HTTPS, and we need the origin to match.
     var findProtocol = /^[a-z]+:/,
@@ -158,7 +158,7 @@ exports.login = function (startUri, endUri, callback, providerName, appUrl) {
         endUri = endUri.replace(findProtocol, requiredProtocol);
     }
 
-    return getBestProvider(knownLoginUis).login(startUri, endUri, callback, providerName, appUrl);
+    return getBestProvider(knownLoginUis).login(startUri, endUri, callback);
 };
 
 exports.toJson = function (value) {

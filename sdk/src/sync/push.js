@@ -9,7 +9,6 @@
 
 var Validate = require('../Utilities/Validate'),
     Query = require('azure-query-js').Query,
-    verror = require('verror'),
     Platform = require('../Platform'),
     taskRunner = require('../Utilities/taskRunner'),
     MobileServiceTable = require('../MobileServiceTable'),
@@ -110,7 +109,7 @@ function createPushManager(client, store, storeTaskRunner, operationTableManager
                         lastProcessedOperationId = currentOperation.logRecord.id;
                         pushConflicts.push(pushError);
                     } else { 
-                        throw new verror.VError(pushError.getError(), 'Push failed while pushing operation for tableName : ' + currentOperation.logRecord.tableName +
+                        throw new console.log(pushError.getError() + '. Push failed while pushing operation for tableName : ' + currentOperation.logRecord.tableName +
                                                                  ', action: ' + currentOperation.logRecord.action +
                                                                  ', and record ID: ' + currentOperation.logRecord.itemId);
                     }

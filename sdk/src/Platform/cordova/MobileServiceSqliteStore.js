@@ -15,7 +15,7 @@ var Platform = require('.'),
     sqliteSerializer = require('./sqliteSerializer'),
     storeHelper = require('./storeHelper'),
     Query = require('azure-query-js').Query,
-    formatSql = require('azure-odata-sql').format,
+    formatSql = require('react-native-azure-odata-sql').format,
     taskRunner = require('../../Utilities/taskRunner'),
     idPropertyName = "id", // TODO: Add support for case insensitive ID and custom ID column
     defaultDbName = 'mobileapps.db';
@@ -542,7 +542,7 @@ function getSqlStatementsFromQuery(query) {
     return statements;
 }
 
-// Gets the parameters from a statement defined by azure-odata-sql
+// Gets the parameters from a statement defined by react-native-azure-odata-sql
 function getStatementParameters(statement) {
     var params = [];
 
