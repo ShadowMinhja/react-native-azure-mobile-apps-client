@@ -57,12 +57,14 @@ Object.defineProperties(MobileServiceClient.prototype, {
  * 
  * @param {string} applicationUrl The URL of the Azure Mobile backend.
  */
-function MobileServiceClient(applicationUrl) {
+function MobileServiceClient(applicationUrl, applicationKey) {
 
     Validate.isString(applicationUrl, 'applicationUrl');
     Validate.notNullOrEmpty(applicationUrl, 'applicationUrl');
+    Validate.isString(applicationKey, 'applicationKey');
 
     this.applicationUrl = applicationUrl;
+    this.applicationKey = applicationKey || null;
 
     var sdkInfo = Platform.getSdkInfo();
     var osInfo = Platform.getOperatingSystemInfo();
@@ -188,7 +190,7 @@ MobileServiceClient.prototype.withFilter = function (serviceFilter) {
     Validate.notNull(serviceFilter, 'serviceFilter');
 
     // Clone the current instance
-    var client = new MobileServiceClient(this.applicationUrl);
+    var client = new MobileServiceClient(this.applicationUrl, this.applicationKey);
     client.currentUser = this.currentUser;
 
     // Chain the service filter with any existing filters
@@ -276,6 +278,9 @@ MobileServiceClient.prototype._request = function (method, uriFragment, content,
         _.extend(options.headers, headers);
     }
     options.headers["X-ZUMO-INSTALLATION-ID"] = MobileServiceClient._applicationInstallationId;
+    if (!_.isNullOrEmpty(this.applicationKey)) {
+        options.headers["X-ZUMO-APPLICATION"] = this.applicationKey;
+    }
     if (this.currentUser && !_.isNullOrEmpty(this.currentUser.mobileServiceAuthenticationToken)) {
         options.headers["X-ZUMO-AUTH"] = this.currentUser.mobileServiceAuthenticationToken;
     }
