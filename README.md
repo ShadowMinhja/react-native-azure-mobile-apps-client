@@ -61,7 +61,7 @@ Install the SDK from github: `npm install shadowminhja/react-native-azure-mobile
 
 You can now use it in your Javascript code as follows:
 ```
-var WindowsAzure = require('azure-mobile-apps-client');
+var WindowsAzure = require('react-native-azure-mobile-apps-client');
 // Create a reference to the Azure App Service
 var clientRef = new WindowsAzure.MobileServiceClient('https://YOUR-SITE-NAME.azurewebsites.net');
 ```
